@@ -10,8 +10,8 @@ body{
     margin:0;
 }
 
- /* This part defines how the content looks from 600 pixels and above*/
-@media screen and (min-width: 600px) {
+ /* This part defines how the content looks from 300 pixels and above*/
+@media screen and (min-width: 400px) {
     .wrapper {
         margin-top: calc(10% - 2rem);
         flex-wrap: wrap;
@@ -55,7 +55,7 @@ body{
     }
 }
 /* This part defines how the content looks from 1000 pixels and above*/
-@media screen and (min-width: 900px){
+@media screen and (min-width: 1000px){
     .wrapper{
         display: grid;
         grid-template-columns: 400px 400px;
