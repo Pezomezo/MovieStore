@@ -1,0 +1,227 @@
+/* The background of the website is set here*/
+body{
+    background-image: url("Images/darkfloor.jpg") ;
+}
+
+/* The title of the web page*/
+.pageTitle{
+    text-align: center;
+    font-size:200px;
+    margin:0;
+}
+
+ /* This part defines how the content looks from 600 pixels and above*/
+@media screen and (min-width: 600px) {
+    .wrapper {
+        margin-top: calc(10% - 2rem);
+        flex-wrap: wrap;
+        flex: 1 1 calc(50% - 2rem);
+    }
+    .pageTitle{
+        font-size: 125px;
+    }
+
+    /* This class is hidden behind the trapdoor */
+    .monster {
+        position: relative;
+        width: 750px;
+        height: 360px;
+        margin: 50px auto;
+        background: url("Images/monster.jpg") no-repeat;
+        background-size: cover;
+        transform-style: preserve-3d;
+        perspective: 700px;
+    }
+
+    .title{
+        font-size: 50px;
+        text-decoration: underline;
+    }
+
+    .plot{
+        font-family: Chiller;
+        font-size: 33px;
+        font-weight: bolder ;
+    }
+
+    .imdbRating{
+        font-weight: bold;
+        font-size: 40px;
+    }
+
+    .age{
+        font-weight: bold;
+        font-size: 30px;
+    }
+}
+/* This part defines how the content looks from 1000 pixels and above*/
+@media screen and (min-width: 900px){
+    .wrapper{
+        display: grid;
+        grid-template-columns: 400px 400px;
+        grid-template-rows: 200px;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: calc(5% - 2rem);
+    }
+
+    .monster {
+        position: relative;
+        width: 400px;
+        height: 260px;
+        margin: 100px auto;
+        background: url("Images/monster.jpg") no-repeat right 57% top;
+        background-size: cover;
+        transform-style: preserve-3d;
+        perspective: 600px;
+    }
+
+    .plot{
+        font-family: Chiller;
+        font-size: larger;
+        font-weight: bold ;
+    }
+    .imdbRating{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .age{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .title{
+        font-size: 30px;
+
+    }
+}
+/* This part defines how the content looks from 1400 pixels and above*/
+@media screen and (min-width: 1400px) {
+    .wrapper{
+        display: grid;
+        grid-template-columns: 400px 400px 400px;
+        grid-template-rows: 200px;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: calc(5% - 2rem);
+    }
+
+    .monster {
+        position: relative;
+        width: 400px;
+        height: 260px;
+        margin: 100px auto;
+        background: url("Images/monster.jpg") no-repeat right 57% top;
+        background-size: cover;
+        transform-style: preserve-3d;
+        perspective: 600px;
+    }
+
+    .plot{
+        font-family: Chiller;
+        font-size: larger;
+        font-weight: bold ;
+    }
+    .imdbRating{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .age{
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .title{
+        font-size: 30px;
+
+    }
+}
+
+/* This class sets up the trapdoor and the grid the display the data over it organised */
+.trapDoor{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background:url("Images/BG.jpg") rgba(0, 0, 0, 0.5)  no-repeat;
+    background-size: cover;
+    transform-origin: 50% 0;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 33% 33% 33%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Takes all these classes and assigns a texture to the text inside them */
+.title, .plot, .age, .imdbRating, .pageTitle{
+    background: url("Images/bloddy-texture.jpg") repeat-x 0 0;
+    color: black;
+    -webkit-font-smoothing:subpixel-antialiased;
+    -webkit-background-clip:text;
+    -moz-background-clip:revert;
+    background-clip:revert;
+    -webkit-text-fill-color:transparent;
+    text-decoration: underline;
+    text-shadow: black;
+    text-transform:uppercase;
+}
+
+/* In the following I place the data into the grid defined in the .trapdoor*/
+.trapdoor .title{
+    grid-column: 1;
+    text-align: center;
+}
+
+.trapdoor .age{
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.trapdoor .imdbRating{
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.trapDoor .plot{
+    grid-column: 2;
+    grid-row: 1 / span 3;
+}
+
+/* Starts the trapdoor animation when the monster element is being hovered over */
+.monster .trapDoor:hover{
+    animation: trapdoorAnimation;
+    animation-duration: 1s;
+}
+
+/* Animation of the trapdoor effect */
+@keyframes trapdoorAnimation {
+    0%   {transform: rotateX(0) translateZ(0)}
+    50%  {transform: rotateX(60deg) translateZ(2px)}
+    100% {transform: rotateX(0) translateZ(0)}
+}
+
+#overlay{
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+/* Displays the embedded video in the middle of the screen */
+#youtubeVid{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
