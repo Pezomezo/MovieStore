@@ -166,6 +166,14 @@ body{
     -webkit-text-fill-color:transparent;
     text-decoration: underline;
     text-shadow: black;
+
+}
+
+/* I am setting every text except the movie title to uppercase
+   This is important because I cant change the format of the title,
+   so I can compare the strings to find the right trailer to play
+*/
+.plot, .age, .imdbRating, .pageTitle{
     text-transform:uppercase;
 }
 
